@@ -1,0 +1,8 @@
+div.adjustable-value {
+    display: flex;
+    width: 32em;
+}
+
+div.adjustable-value>p {
+    flex: 0 0 9em;
+}
