@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 
+const mouseDown : React.MouseEventHandler<SVGCircleElement> = (x) => {
+  console.log(x)
+}
+
+const mouseMove = mouseDown;
+const mouseUp = mouseDown;
+
 function App() {
   const [x, setX] = useState(66)
   const [y, setY] = useState(100)
@@ -11,7 +18,7 @@ function App() {
       <Slider update={setY} value={y} label={"Y"} min={12} max={120} />
       <Result label={"Z"} value={calcZ(x, y)} />
       <p><svg width={300} height={300}>
-        <circle r={10} cx={`${x}%`} cy={`${y}%`}/>
+        <circle r={10} cx={`${x}%`} cy={`${y}%`} onMouseDown={mouseDown} onMouseMove={mouseMove} onMouseUp={mouseUp}/>
       </svg>
       </p>
     </div>
