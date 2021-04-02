@@ -11,7 +11,7 @@ function App() {
       <Slider update={setY} value={y} label={"Y"} min={12} max={120} />
       <Result label={"Z"} value={calcZ(x, y)} />
       <p><svg width={300} height={300}>
-        <circle r={10} cx={`${x}%`} cy={"100%"}/>
+        <circle r={10} cx={`${x}%`} cy={`${y}%`}/>
       </svg>
       </p>
     </div>
