@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,qBACI,oBAAa,CAAb,YAAa,CACb,UACJ,CAEA,uBACI,oBAAa,CAAb,YACJ","file":"main.15991264.chunk.css","sourcesContent":["div.adjustable-value {\n    display: flex;\n    width: 32em;\n}\n\ndiv.adjustable-value>p {\n    flex: 0 0 9em;\n}"]}
