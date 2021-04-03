@@ -20,6 +20,8 @@ function App() {
             setY(y)
           }
         }/>
+        <Shadow sunX={x}/>
+        <Gnomon />
       </svg>
       </p>
     </div>
@@ -93,6 +95,27 @@ const DraggableCicle = (props: { center: {x:number, y:number}, draggedTo: (x:num
       }}
       onMouseLeave={update}
       onMouseMove={update}
+    />
+  )
+}
+
+const Gnomon = (props: {}) => {
+  return (
+    <rect
+      x={150}
+      y={180}
+      width={10}
+      height={100}
+    />
+  )
+}
+
+const Shadow = (props: {sunX:number}) => {
+  return (
+    <polygon
+      fill="#444"
+      fillOpacity="0.5"
+      points={`155,180 150,290 ${300-props.sunX},290`}
     />
   )
 }
