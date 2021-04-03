@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   const [x, setX] = useState(66)
-  const [y, setY] = useState(100)
+  const [y, setY] = useState(80)
 
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
             setY(y)
           }
         }/>
-        <Shadow sunX={x}/>
+        <Shadow sunX={x} sunY={y}/>
         <Gnomon />
       </svg>
       </p>
@@ -110,7 +110,7 @@ const Gnomon = (props: {}) => {
   )
 }
 
-const Shadow = (props: {sunX:number}) => {
+const Shadow = (props: {sunX:number, sunY: number}) => {
   return (
     <polygon
       fill="#444"
