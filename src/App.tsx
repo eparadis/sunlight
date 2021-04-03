@@ -29,7 +29,7 @@ function App() {
 const Hello = () => {
   return (
     <p>
-      <code>HELLO WORLD!</code>
+      <code>Seattle Sunlight</code>
     </p>
   )
 }
