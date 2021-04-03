@@ -61,15 +61,25 @@ const DraggableCicle = (props: { center: {x:number, y:number}, draggedTo: (x:num
   const [isDragging, setDragging] = useState(false)
   const [clickDownPt, setClickDownPt] = useState({x: 0, y: 0})
   const [delta, setDelta] = useState({x: 0, y: 0})
-  // const [center, setCenter] = useState(props.center)
 
   const cx = props.center.x + delta.x
   const cy = props.center.y + delta.y
+
+  const update = (ev: React.MouseEvent<SVGCircleElement, MouseEvent>): void => {
+    if (!isDragging) {
+      setDelta({ x: 0, y: 0 });
+      return;
+    }
+    setDelta({
+      x: ev.clientX - clickDownPt.x,
+      y: ev.clientY - clickDownPt.y
+    });
+  };
   
   return (
     <circle r={isDragging ? 15 : 10}
-          // cx={`${x}`} cy={`${y}`}
-          transform={`translate(${cx},${cy})`}
+          cx={`${cx}`} cy={`${cy}`}
+          // transform={`translate(${cx},${cy})`}
           onMouseDown={(ev)=>{
             setClickDownPt({ x: ev.clientX, y: ev.clientY})
             setDragging(true)
@@ -79,16 +89,8 @@ const DraggableCicle = (props: { center: {x:number, y:number}, draggedTo: (x:num
             props.draggedTo(cx, cy)
             setDelta({x: 0, y: 0})
           }}
-          onMouseMove={(ev)=>{
-            if(!isDragging) {
-              setDelta({x: 0, y: 0})
-              return
-            }
-            setDelta({
-              x: ev.clientX - clickDownPt.x,
-              y: ev.clientY - clickDownPt.y 
-            })
-          }}
+          onMouseLeave={update}
+          onMouseMove={update}
         />
   )
 }
