@@ -75,23 +75,25 @@ const DraggableCicle = (props: { center: {x:number, y:number}, draggedTo: (x:num
       y: ev.clientY - clickDownPt.y
     });
   };
-  
+
   return (
-    <circle r={isDragging ? 15 : 10}
-          cx={`${cx}`} cy={`${cy}`}
-          // transform={`translate(${cx},${cy})`}
-          onMouseDown={(ev)=>{
-            setClickDownPt({ x: ev.clientX, y: ev.clientY})
-            setDragging(true)
-          }}
-          onMouseUp={()=>{
-            setDragging(false)
-            props.draggedTo(cx, cy)
-            setDelta({x: 0, y: 0})
-          }}
-          onMouseLeave={update}
-          onMouseMove={update}
-        />
+    <circle
+      fill={"yellow"}
+      r={isDragging ? 15 : 10}
+      cx={`${cx}`} cy={`${cy}`}
+      // transform={`translate(${cx},${cy})`}
+      onMouseDown={(ev)=>{
+        setClickDownPt({ x: ev.clientX, y: ev.clientY})
+        setDragging(true)
+      }}
+      onMouseUp={()=>{
+        setDragging(false)
+        props.draggedTo(cx, cy)
+        setDelta({x: 0, y: 0})
+      }}
+      onMouseLeave={update}
+      onMouseMove={update}
+    />
   )
 }
 
