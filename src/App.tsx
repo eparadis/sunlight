@@ -6,21 +6,32 @@ function App() {
   const [x, setX] = useState(66)
   const [y, setY] = useState(80)
 
+  const handleDragChange = (x: number)=>{
+    // draggable circle has issued a change
+    // update the slider
+    console.log(`circle onChange x: ${x}`)
+    setX(x) // NOTE this _does_ work
+  }
+  
+  const handleSliderChange = (x: number) => {
+    // slider has issued a change
+    // update the circle
+    console.log(`slider onChange x: ${x}`)
+    setX(x) // TODO this _doesn't_ work
+  }
+
   return (
     <div className="App">
       <Hello />
-      <Slider update={setX} value={x} label={"X"} min={0} max={300} />
+      <Slider update={handleSliderChange} value={x} label={"X"} min={0} max={300} />
       <Slider update={setY} value={y} label={"Y"} min={0} max={300} />
       <Result label={"Z"} value={calcZ(x, y)} />
       
       <p><svg width={300} height={300}>
         <rect width={"100%"} height={"100%"} fill="#DDD"/>
         <DraggableCicle center={{x: x, y: y}} 
-          draggedTo={(x,y)=>{
-            setX(x)
-            setY(y)
-          }
-        }/>
+          onChange={handleDragChange}
+        />
         <Shadow sunX={x} sunY={y}/>
         <Gnomon />
       </svg>
